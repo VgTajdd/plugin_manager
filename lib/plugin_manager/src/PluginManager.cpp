@@ -1,6 +1,6 @@
-#include "PluginManager.h"
-#include <Common/IPlugin.h>
 #include <iostream>
+#include "PluginManager.h"
+#include <common/IPlugin.h>
 
 // This time we will only use an exported plugin method called 'getInstance'
 // which will return de memory address of the static instace in the dll.
