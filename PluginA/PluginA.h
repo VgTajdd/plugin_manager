@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Common/IPlugin.h>
+#include <common/IPlugin.h>
 
 class PluginA : public IPlugin
 {
@@ -10,9 +10,9 @@ public:
 	int doSomething( int a, int b );
 };
 
-#include <Common/PluginDefine.h>
-#include "PluginAExport.h"
-DEFINE_GET_INSTANCE( PluginA, PLUGIN_A_EXPORT )
+#include <common/PluginDefine.h>
+#include <common/Export.h>
+DEFINE_GET_INSTANCE( PluginA, API_EXPORT )
 
 // Optional.
-#include <Common/dllmain.h>
+#include <common/dllmain.h>

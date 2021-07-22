@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Common/IPlugin.h>
+#include <common/IPlugin.h>
 
 class PluginB : public IPlugin
 {
@@ -12,6 +12,6 @@ private:
 	void helperMethod( int a, int b );
 };
 
-#include <Common/PluginDefine.h>
-#include "PluginBExport.h"
-DEFINE_GET_INSTANCE( PluginB, PLUGIN_B_EXPORT )
+#include <common/PluginDefine.h>
+#include <common/Export.h>
+DEFINE_GET_INSTANCE( PluginB, API_EXPORT )
