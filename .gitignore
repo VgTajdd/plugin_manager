@@ -1,5 +1,2 @@
 .vs/
-x64/
-Debug/
-Release/
-*.user
+build/
