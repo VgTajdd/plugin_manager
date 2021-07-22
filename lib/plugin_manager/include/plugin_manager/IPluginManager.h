@@ -1,8 +1,8 @@
 #pragma once
 
-#include "PMExport.h"
+#include <common/Export.h>
 
-class PM_EXPORT IPluginManager
+class API_EXPORT IPluginManager
 {
 public:
 	static IPluginManager* Get();
