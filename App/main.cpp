@@ -1,7 +1,6 @@
-#include <IPluginManager.h>
-#include <Common/IPlugin.h>
-
 #include <iostream>
+#include <plugin_manager/IPluginManager.h>
+#include <common/IPlugin.h>
 
 int main()
 {

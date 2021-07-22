@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../public/IPluginManager.h"
+#include "plugin_manager/IPluginManager.h"
 #include <unordered_map>
 #ifdef _WIN32
 #include <windows.h>
