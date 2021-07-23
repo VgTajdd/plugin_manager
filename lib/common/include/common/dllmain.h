@@ -1,3 +1,4 @@
+#ifdef _MSC_VER
 #include <Windows.h>
 #include <iostream>
 
@@ -24,3 +25,4 @@ BOOL APIENTRY DllMain( HINSTANCE hInst,
 	}
 	return TRUE;
 }
+#endif

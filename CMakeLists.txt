@@ -11,6 +11,10 @@ add_subdirectory(lib/plugin_manager)
 
 target_link_libraries(app PRIVATE PluginManager)
 
+if(UNIX)
+    target_link_libraries(PluginManager ${CMAKE_DL_LIBS})
+endif(UNIX)
+
 # Plugins.
 add_subdirectory(PluginA)
 add_subdirectory(PluginB)
