@@ -8,10 +8,20 @@
 #  ifndef API_EXPORT
 #    ifdef API_EXPORTS
 /* We are building this library */
+#if defined(_MSC_VER)
 #      define API_EXPORT __declspec(dllexport)
+#elif defined(__GNUC__)
+#      define API_EXPORT __attribute__((visibility("default")))
+#else
+#      pragma warning Unknown dynamic link import/export semantics.
+#endif
 #    else
 /* We are using this library */
+#if defined(_MSC_VER)
 #      define API_EXPORT __declspec(dllimport)
+#else
+#      define API_EXPORT
+#endif
 #    endif
 #  endif
 

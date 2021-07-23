@@ -4,7 +4,7 @@
 
 int main()
 {
-	const char* plugins[] = { "pluginA.dll", "pluginB.dll", "pluginC.dll" };
+	const char* plugins[] = { "pluginA", "pluginB", "pluginC" };
 
 	std::cout << "Starting Plugin Manager..."<< std::endl;
 	for ( const auto pluginFilename : plugins )

@@ -2,9 +2,17 @@
 #include "PluginManager.h"
 #include <common/IPlugin.h>
 
-// This time we will only use an exported plugin method called 'getInstance'
-// which will return de memory address of the static instace in the dll.
-// When the dll is unloaded this static instance variable gets destroyed.
+#ifdef _WIN32
+#include <windows.h>
+#define UNLOAD_HANDLE(x) FreeLibrary((HMODULE)(x))
+#else
+#include <dlfcn.h>
+#define UNLOAD_HANDLE dlclose
+#endif
+
+// This time we will only use an exported plugin-function called 'getInstance'
+// which will return de memory address of the static instance in the shared library.
+// When the shared library is unloaded this static instance variable gets destroyed.
 //
 // If we were using a concrete plugin wich will require much more space in memory
 // the static strategy may not be the best solution and a 'createInstance' and
@@ -13,30 +21,31 @@ bool PluginManager::loadPlugin( const char* filename )
 {
 	std::string filename_str = filename;
 #ifdef _WIN32
+	filename_str += ".dll";
 	auto handle = LoadLibraryA( filename_str.c_str() );
 	if ( !handle )
 	{
-		std::cout << "Failed to load plugin: " << filename << std::endl;
+		std::cout << "Failed to load plugin: " << filename_str.c_str() << std::endl;
 		return false;
 	}
 	auto getInstance = ( IPlugin*(*)())GetProcAddress( handle, "getInstance" );
 	if ( !getInstance )
 	{
-		FreeLibrary( handle );
+		UNLOAD_HANDLE( handle );
 		std::cout << "Failed to get adress to load function \"getInstance\"" << std::endl;
 		return false;
 	}
 #else
-	auto handle = dlopen( ( "lib" + filename_str + ".so" ).c_str(), RTLD_LAZY );
+	auto handle = dlopen( ( "./lib" + filename_str + ".so" ).c_str(), RTLD_LAZY );
 	if ( !handle )
 	{
 		std::cout << "Failed to load plugin: " << dlerror() << std::endl;
 		return false;
 	}
-	auto getInstance = ( IPlugin * ( * )( ) )dlsym( handle, "getInstance" );
-	if ( !load )
+	auto getInstance = ( IPlugin* (*)() )dlsym( handle, "getInstance" );
+	if ( !getInstance)
 	{
-		dlclose( handle );
+		UNLOAD_HANDLE( handle );
 		std::cout << "Failed to get address of load function: " << dlerror() << std::endl;
 		return false;
 	}
@@ -48,10 +57,6 @@ bool PluginManager::loadPlugin( const char* filename )
 	}
 	m_handles[filename] = handle;
 	m_plugins[filename] = object;
-#ifndef _WIN32
-	//auto name = (char* (*)())dlsym(handle, "name");
-	//auto version = (char* (*)())dlsym(handle, "version");
-#endif
 	return true;
 }
 
@@ -62,7 +67,7 @@ bool PluginManager::unloadPlugin( const char* filename )
 		std::cout << "ERROR: Pluging " << filename << " is not loaded." << std::endl;
 		return false;
 	}
-	FreeLibrary( m_handles.at( filename ) );
+	UNLOAD_HANDLE( m_handles.at( filename ) );
 	m_handles.erase( filename );
 	m_plugins.erase( filename );
 	return true;
@@ -86,12 +91,11 @@ IPluginManager* IPluginManager::Get()
 
 PluginManager::~PluginManager()
 {
-	// The creation and destruction of the concrete plugin should be done inside it's dll.
+	// The creation and destruction of the concrete plugin MUST be done inside it's shared lib.
 	m_plugins.clear();
-
 	for ( auto [filename, handle] : m_handles )
 	{
-		FreeLibrary( handle );
+		UNLOAD_HANDLE( m_handles.at( filename ) );
 	}
 	m_handles.clear();
 }
