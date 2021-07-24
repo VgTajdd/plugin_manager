@@ -5,6 +5,10 @@ target_include_directories(app
     PRIVATE "${PROJECT_SOURCE_DIR}/lib/common/include"
 )
 
+target_link_directories(app
+    PRIVATE "${CMAKE_BINARY_DIR}/bin"
+)
+
 # if(UNIX)
 # set_target_properties(app
 #     PROPERTIES
