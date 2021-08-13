@@ -2,17 +2,10 @@
 
 Plugin Manager developed in C++.
 
-![](docs/diagram.png)
+![](docs/classes_diagram.png)
 
 ## TODO
-- [ ] Use CMake
-- [ ] Use GitHub actions
-- [ ] Add tests
-- [ ] Update documentation
-- [ ] Add copyright to files
-- [ ] Add python plugin
-- [ ] Add qt plugin
-- [ ] Add render plugins
+Go to [TODO.md](TODO.md)
 
 ## Contributing
 

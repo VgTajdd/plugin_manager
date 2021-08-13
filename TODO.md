@@ -6,9 +6,9 @@
 
 ## TOOLS - TESTS - CI - DOC
 
-- [ ] Use CMake
+- [X] Use CMake
 - [ ] Use clang-format
 - [ ] Add tests (gtest)
 - [ ] Use GitHub actions
-- [ ] Add/Update documentation (puml)
+- [X] Add/Update documentation (puml)
 - [ ] Add copyright to files
