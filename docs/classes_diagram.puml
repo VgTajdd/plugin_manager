@@ -1,0 +1,45 @@
+@startuml Plugin Manager Class Diagram
+
+namespace common{
+    interface IPlugin{
+        + void sayHelloTo( const char* username )
+        + const char* name()
+        + void doSomething()
+    }
+}
+
+namespace PluginManager.dll{
+    interface IPluginManager{
+        + bool loadPlugin(const char* filename)
+        + bool unloadPlugin(const char* filename)
+        + IPlugin* getPlugin(const char* filename)
+    }
+    class PluginManager
+
+    ' Inheritance.
+    PluginManager -|> IPluginManager
+}
+
+namespace PluginA.dll{
+    class PluginA
+}
+
+package app.exe <<Rectangle>> {
+}
+
+' Aggregation.
+PluginManager.dll.PluginManager o-- common.IPlugin : contains
+
+' Inheritance.
+PluginA.dll.PluginA -|> common.IPlugin
+
+' Dependency.
+app.exe -> common.IPlugin
+
+' Component dependency.
+PluginManager.dll ..> PluginA.dll
+note on link #lightgray: Explicit Loading\n(Plugin)
+app.exe .> PluginManager.dll
+note on link #lightgray: Implicit Loading\n(Dynamic Linking)
+
+@enduml
