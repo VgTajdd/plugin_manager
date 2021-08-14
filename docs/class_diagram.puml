@@ -1,6 +1,6 @@
 @startuml Plugin Manager Class Diagram
 
-namespace common{
+package common <<Folder>> #LightSkyBlue {
     interface IPlugin{
         + void sayHelloTo( const char* username )
         + const char* name()
@@ -8,7 +8,7 @@ namespace common{
     }
 }
 
-namespace PluginManager.dll{
+package PluginManagerLib <<Node>> #LightGreen {
     interface IPluginManager{
         + bool loadPlugin(const char* filename)
         + bool unloadPlugin(const char* filename)
@@ -20,26 +20,27 @@ namespace PluginManager.dll{
     PluginManager -|> IPluginManager
 }
 
-namespace PluginA.dll{
+package Plugin <<Node>> #LightGreen {
     class PluginA
 }
 
-package app.exe <<Rectangle>> {
+package app <<Node>> #LightBlue {
 }
 
 ' Aggregation.
-PluginManager.dll.PluginManager o-- common.IPlugin : contains
+PluginManager o-- IPlugin : contains
 
 ' Inheritance.
-PluginA.dll.PluginA -|> common.IPlugin
+PluginA -|> IPlugin
 
 ' Dependency.
-app.exe -> common.IPlugin
+app -> IPlugin
+app -> IPluginManager
 
 ' Component dependency.
-PluginManager.dll ..> PluginA.dll
+PluginManagerLib ..> Plugin
 note on link #lightgray: Explicit Loading\n(Plugin)
-app.exe .> PluginManager.dll
+app .> PluginManagerLib
 note on link #lightgray: Implicit Loading\n(Dynamic Linking)
 
 @enduml

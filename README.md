@@ -2,7 +2,7 @@
 
 Plugin Manager developed in C++.
 
-![](docs/classes_diagram.png)
+![](docs/class_diagram.png)
 
 ## TODO
 Go to [TODO.md](TODO.md)
