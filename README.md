@@ -1,11 +1,11 @@
 # Plugin Manager
-Plugin Manager developed in C++.
+Plugin Manager developed in C++
 
-# Build & run
+## Usage
 
 I added some helper files for ```vscode``` if the user prefer to use this IDE. If ```vscode``` is choosen, I recommend to install and use the extension [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools). It works for Windows, Linux and macOS.
 
-## Linux - macOS
+### Linux - macOS
 
 If you prefer to use the terminal instead of ```vscode```, use these commands:
 
@@ -27,12 +27,9 @@ and then run it:
 ```bash
 ./bin/app
 ```
-## Windows
+### Windows
 
 Use the equivalent commands. It also possible to load and build the project using ```Visual Studio```.
-
-## TODO
-Go to [TODO.md](TODO.md)
 
 ## Contributing
 
