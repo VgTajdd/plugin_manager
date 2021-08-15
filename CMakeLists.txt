@@ -19,3 +19,7 @@ endif(UNIX)
 # Plugins.
 add_subdirectory(PluginA)
 add_subdirectory(PluginB)
+
+# Tests.
+enable_testing()
+add_subdirectory(tests EXCLUDE_FROM_ALL)
