@@ -1,36 +1,49 @@
 # Plugin Manager
-Plugin Manager developed in C++
+
+Plugin Manager developed in C++.
+
+[![CMake-Ubuntu](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake_ubuntu.yml/badge.svg?branch=main&event=push)](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake_ubuntu.yml)
 
 ## Usage
 
-I added some helper files for ```vscode``` if the user prefer to use this IDE. If ```vscode``` is choosen, I recommend to install and use the extension [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools). It works for Windows, Linux and macOS.
-
-### Linux - macOS
-
-If you prefer to use the terminal instead of ```vscode```, use these commands:
+Clone the repository using one of the following commands:
 
 ```bash
-git clone https://github.com/vgtajdd/plugin_manager.git
-cd plugin-manager
-mkdir build
-cd build
-cmake ..
-make -j
-./bin/app
+git clone https://github.com/vgtajdd/plugin_manager.git     # HTTPS
+git clone git@github.com:VgTajdd/plugin_manager.git         # SSH
 ```
-or just use this script:
+
+Configure the project (CMake):
 
 ```bash
-source script/rebuild.bash
+cd plugin_manager
+cmake -S . -B build
 ```
-and then run it:
+
+Build the targets (CMake):
+
 ```bash
-./bin/app
+cmake --build build --config Debug -j
 ```
+
+Run the main target:
+
+- For ```macOS``` and ```Linux```:
+    ```
+    ./build/bin/app
+    ```
+- For ```Windows```:
+    ```
+    build/bin/Debug/app.exe
+    ```
+
+### Visual Studio Code
+
+I added some helper files for ```vscode``` if the user prefers to use this IDE. If ```vscode``` is chosen, I recommend to install and use the extension [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools). It works for Windows, Linux and macOS.
+
 ### Windows
 
-Use the equivalent commands. It also possible to load and build the project using ```Visual Studio```.
-
+It also possible to load and build the project using ```Visual Studio```.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
