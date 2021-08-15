@@ -7,7 +7,7 @@
 ## TOOLS - TESTS - CI - DOC
 
 - [X] Use CMake
-- [ ] Add tests (gtest)
+- [X] Add tests (gtest)
 - [X] Use GitHub actions
 - [X] Add/Update documentation (puml)
 - [X] Add copyright to files

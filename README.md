@@ -29,11 +29,14 @@ cmake --build build --config Debug -j
 Run the main target:
 
 - For ```macOS``` and ```Linux```:
-    ```
+
+    ```bash
     ./build/bin/app
     ```
+
 - For ```Windows```:
-    ```
+
+    ```bash
     build/bin/Debug/app.exe
     ```
 
@@ -44,6 +47,15 @@ I added some helper files for ```vscode``` if the user prefers to use this IDE. 
 ### Windows
 
 It also possible to load and build the project using ```Visual Studio```.
+
+## Tests
+
+Use the following commands:
+
+```bash
+cmake --build build --target tests/test_plugin_manager
+ctest --test-dir build --output-on-failure
+```
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
