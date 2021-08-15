@@ -1,3 +1,9 @@
+// ========================================================================= //
+// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// This code is licensed under the MIT License.                              //
+// IPluginManager.h                                                          //
+// ========================================================================= //
+
 #pragma once
 
 #include <common/Export.h>

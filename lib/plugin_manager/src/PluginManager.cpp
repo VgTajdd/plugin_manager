@@ -1,3 +1,9 @@
+// ========================================================================= //
+// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// This code is licensed under the MIT License.                              //
+// PluginManager.cpp                                                         //
+// ========================================================================= //
+
 #include <iostream>
 #include "PluginManager.h"
 #include <common/IPlugin.h>

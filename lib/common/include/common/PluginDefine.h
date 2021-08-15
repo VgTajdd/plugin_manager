@@ -1,3 +1,9 @@
+// ========================================================================= //
+// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// This code is licensed under the MIT License.                              //
+// PluginDefine.h                                                            //
+// ========================================================================= //
+
 #pragma once
 
 // This is a macro for creating a getInstance function for a given plugin.

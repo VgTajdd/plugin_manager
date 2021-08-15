@@ -1,3 +1,9 @@
+// ========================================================================= //
+// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// This code is licensed under the MIT License.                              //
+// Export.h                                                                  //
+// ========================================================================= //
+
 #ifndef API_EXPORT_H
 #define API_EXPORT_H
 
