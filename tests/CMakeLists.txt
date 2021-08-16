@@ -19,4 +19,4 @@ target_include_directories(test_plugin_manager
 )
 
 include(GoogleTest)
-gtest_discover_tests(test_plugin_manager)
+gtest_discover_tests(test_plugin_manager WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
