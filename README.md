@@ -31,13 +31,15 @@ Run the main target:
 - For ```macOS``` and ```Linux```:
 
     ```bash
-    ./build/bin/app
+    cd build/bin
+    ./app
     ```
 
 - For ```Windows```:
 
     ```bash
-    build/bin/Debug/app.exe
+    cd build/bin/Debug
+    app.exe
     ```
 
 ### Visual Studio Code
@@ -53,8 +55,8 @@ It also possible to load and build the project using ```Visual Studio```.
 Use the following commands:
 
 ```bash
-cmake --build build --target tests/test_plugin_manager
-ctest --test-dir build --output-on-failure
+cmake --build build/tests --target test_plugin_manager -j
+cd build && ctest --output-on-failure && cd ..
 ```
 ## Contributing
 
