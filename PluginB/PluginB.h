@@ -18,6 +18,6 @@ private:
 	void helperMethod( int a, int b );
 };
 
-#include <common/PluginDefine.h>
+#include <common/PluginDefines.h>
 #include <common/Export.h>
 DEFINE_GET_INSTANCE( PluginB, API_EXPORT )
