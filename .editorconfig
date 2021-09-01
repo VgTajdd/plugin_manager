@@ -8,7 +8,7 @@ cpp_indent_braces = false
 cpp_indent_multi_line_relative_to = innermost_parenthesis
 cpp_indent_within_parentheses = align_to_parenthesis
 cpp_indent_preserve_within_parentheses = true
-cpp_indent_case_contents = false
+cpp_indent_case_contents = true
 cpp_indent_case_labels = true
 cpp_indent_case_contents_when_block = false
 cpp_indent_lambda_braces_when_parameter = false
@@ -62,3 +62,8 @@ cpp_space_around_assignment_operator = insert
 cpp_space_pointer_reference_alignment = left
 cpp_space_around_ternary_operator = insert
 cpp_wrap_preserve_blocks = one_liners
+insert_final_newline = true
+indent_style = tab
+trim_trailing_whitespace = true
+
+# https://docs.microsoft.com/en-us/visualstudio/ide/cpp-editorconfig-properties?view=vs-2019
