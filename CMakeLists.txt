@@ -9,7 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 add_subdirectory(src)
 add_subdirectory(lib/plugin_manager)
 
-target_link_libraries(app PRIVATE PluginManager)
+target_link_libraries(app PRIVATE plugin_manager)
 
 if(UNIX)
     SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
