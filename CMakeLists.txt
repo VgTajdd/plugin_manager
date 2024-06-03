@@ -3,8 +3,13 @@ project(PM VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# Same output directory for all targets.
+# Set output directory for executable targets.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin")
+
+# Set output directory for library targets.
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 add_subdirectory(src)
 add_subdirectory(lib/plugin_manager)
