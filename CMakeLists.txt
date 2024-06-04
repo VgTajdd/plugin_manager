@@ -16,11 +16,6 @@ add_subdirectory(lib/plugin_manager)
 
 target_link_libraries(app PRIVATE plugin_manager)
 
-if(UNIX)
-    SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
-    target_link_libraries(PluginManager ${CMAKE_DL_LIBS})
-endif(UNIX)
-
 # Plugins.
 add_subdirectory(PluginA)
 add_subdirectory(PluginB)
