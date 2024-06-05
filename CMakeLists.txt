@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.16.0)
-project(PM VERSION 1.0)
+cmake_minimum_required(VERSION 3.20.0)
+project(plugin_manager_project VERSION 1.1)
 
 set(CMAKE_CXX_STANDARD 20)
 
