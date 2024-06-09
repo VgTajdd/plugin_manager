@@ -11,6 +11,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin")
 # Set output directory for library targets.
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
+if(UNIX)
+    SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
+endif(UNIX)
+
 add_subdirectory(src)
 add_subdirectory(lib/plugin_manager)
 
