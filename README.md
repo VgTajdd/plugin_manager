@@ -2,7 +2,7 @@
 
 Plugin Manager developed in C++.
 
-[![CMake-Ubuntu](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake_ubuntu.yml/badge.svg?branch=main&event=push)](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake_ubuntu.yml)
+[![CMake-CI](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake.yml/badge.svg)](https://github.com/VgTajdd/plugin_manager/actions/workflows/cmake.yml)
 
 ## Usage
 
@@ -60,7 +60,7 @@ cd build && ctest --output-on-failure && cd ..
 ```
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Just to let you know, pull requests are welcome. For major changes, please open an issue first to discuss what you want to change.
 
 ## License
 
