@@ -13,7 +13,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_executable(test_plugin_manager test.cpp)
-target_link_libraries(test_plugin_manager gtest_main PluginManager)
+target_link_libraries(test_plugin_manager gtest_main plugin_manager)
 target_include_directories(test_plugin_manager
   PRIVATE "${PROJECT_SOURCE_DIR}/lib/common/include"
   PRIVATE "${PROJECT_SOURCE_DIR}/lib/plugin_manager/include"
