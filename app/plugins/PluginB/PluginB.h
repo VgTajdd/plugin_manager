@@ -11,9 +11,8 @@
 class PluginB : public IPlugin
 {
 public:
-	const char* name() const;
-	void sayHelloTo( const char* username );
-	int doSomething( int a, int b );
+	const char* name() const override;
+
 private:
 	void helperMethod( int a, int b );
 };
