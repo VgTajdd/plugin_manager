@@ -27,17 +27,17 @@ typedef IPlugin* ( *ReturnIPluginFunction )( );
 // which will return de memory address of the static instance in the shared library.
 // When the shared library is unloaded this static instance variable gets destroyed.
 //
-// If we were using a concrete plugin wich will require much more space in memory
+// If we were using a concrete plugin which will require much more space in memory
 // the static strategy may not be the best solution and a 'createInstance' and
 // 'destroyInstance' would be required.
-bool PluginManager::loadPlugin( const char* filename )
+IPlugin* PluginManager::loadPlugin( const char* filename )
 {
 	// Load handle (so/dll).
 	auto handle = LOAD_HANDLE( std::string( filename ) );
 	if ( !handle )
 	{
 		std::cout << "Plugin handle \"" << filename << "\" was not found." << std::endl;
-		return false;
+		return nullptr;
 	}
 
 	// Get address of the 'getInstance' function.
@@ -46,7 +46,7 @@ bool PluginManager::loadPlugin( const char* filename )
 	{
 		std::cout << "Failed to get the address of the function \"" << GET_INSTANCE_STR << "\"." << std::endl;
 		UNLOAD_HANDLE( handle );
-		return false;
+		return nullptr;
 	}
 
 	// Create instance of the loaded plugin.
@@ -55,11 +55,11 @@ bool PluginManager::loadPlugin( const char* filename )
 	{
 		std::cout << "Function \"" << GET_INSTANCE_STR << "\" was found but it returns nullptr." << std::endl;
 		UNLOAD_HANDLE( handle );
-		return false;
+		return nullptr;
 	}
 	m_handles[filename] = handle;
 	m_plugins[filename] = instance;
-	return true;
+	return instance;
 }
 
 bool PluginManager::unloadPlugin( const char* filename )
