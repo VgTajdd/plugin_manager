@@ -15,15 +15,11 @@ if(UNIX)
     SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
 endif(UNIX)
 
-add_subdirectory(src)
 add_subdirectory(lib/plugin_manager)
 
+add_subdirectory(app)
 target_link_libraries(app PRIVATE plugin_manager)
-
-# Plugins.
-add_subdirectory(PluginA)
-add_subdirectory(PluginB)
 
 # Tests.
 enable_testing()
-add_subdirectory(tests EXCLUDE_FROM_ALL)
+add_subdirectory(tests)
