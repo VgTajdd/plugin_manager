@@ -23,10 +23,9 @@
 
 typedef IPlugin* ( *ReturnIPluginFunction )( );
 
-// This time we will only use an exported plugin-function called 'getInstance'
-// which will return de memory address of the static instance in the shared library.
+// This time we will use an exported plugin-function called 'getInstance'
+// which will return the memory address of the static instance in the shared library.
 // When the shared library is unloaded this static instance variable gets destroyed.
-//
 // If we were using a concrete plugin which will require much more space in memory
 // the static strategy may not be the best solution and a 'createInstance' and
 // 'destroyInstance' would be required.
