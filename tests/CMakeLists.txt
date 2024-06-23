@@ -3,9 +3,9 @@
 
 include(FetchContent)
 FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG f8d7d77 # release-1.14.0
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG f8d7d77 # release-1.14.0
 )
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
@@ -15,8 +15,9 @@ FetchContent_MakeAvailable(googletest)
 add_executable(test_plugin_manager test.cpp)
 target_link_libraries(test_plugin_manager gtest_main plugin_manager)
 target_include_directories(test_plugin_manager
-  PRIVATE "${PROJECT_SOURCE_DIR}/lib/common/include"
-  PRIVATE "${PROJECT_SOURCE_DIR}/lib/plugin_manager/include"
+    PRIVATE "${PROJECT_SOURCE_DIR}/lib/common/include"
+    PRIVATE "${PROJECT_SOURCE_DIR}/lib/plugin_manager/include"
+    PRIVATE "${PROJECT_SOURCE_DIR}/app/include"
 )
 
 include(GoogleTest)

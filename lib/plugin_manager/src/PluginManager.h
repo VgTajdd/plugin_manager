@@ -9,13 +9,15 @@
 #include "plugin_manager/IPluginManager.h"
 #include <unordered_map>
 
+class IPlugin;
+
 class PluginManager : public IPluginManager
 {
 public:
-	~PluginManager();
-	bool loadPlugin( const char* filename );
-	bool unloadPlugin( const char* filename );
-	class IPlugin* getPlugin( const char* filename );
+	~PluginManager() override;
+	IPlugin* loadPlugin( const char* filename ) override;
+	bool unloadPlugin( const char* filename ) override;
+	IPlugin* getPlugin( const char* filename ) override;
 private:
 	std::unordered_map<std::string, IPlugin*> m_plugins;
 	std::unordered_map<std::string, void*> m_handles;

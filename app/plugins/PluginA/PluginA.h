@@ -7,13 +7,14 @@
 #pragma once
 
 #include <common/IPlugin.h>
+#include <app/ICustomPlugin.h>
 
-class PluginA : public IPlugin
+class PluginA : public ICustomPlugin
 {
 public:
-	const char* name() const;
-	void sayHelloTo( const char* username );
-	int doSomething( int a, int b );
+	const char* name() const override;
+	void sayHelloTo( const char* username ) override;
+	int doSomething( int a, int b ) override;
 };
 
 #include <common/PluginDefines.h>
