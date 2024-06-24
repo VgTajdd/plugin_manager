@@ -13,54 +13,58 @@ git clone https://github.com/vgtajdd/plugin_manager.git     # HTTPS
 git clone git@github.com:VgTajdd/plugin_manager.git         # SSH
 ```
 
-Configure the project (CMake):
+Run one of these scripts for building or rebuilding the project depending on your OS:
 
-```bash
-cd plugin_manager
-cmake -S . -B build
+```
+run_build_debug.bat
+run_build_debug.sh
+rebuild_debug.bat
+rebuild_debug.sh
 ```
 
-Build the targets (CMake):
+If you prefer to manually build the project, use the following commands.
 
-```bash
-cmake --build build --config Debug -j
+### Debug and Release
+
+#### Single configurations (CLI)
+
+```js
+# Debug.
+cmake -S. -B build -DCMAKE_BUILD_TYPE=Debug     # Configure.
+cmake --build build --config Debug -j           # Build.
+
+# Release.
+cmake -S. -B build -DCMAKE_BUILD_TYPE=Release   # Configure.
+cmake --build build --config Release -j         # Build.
 ```
 
-Run the main target:
+#### Multi-configuration
+```js
+cmake -S. -B build -DCMAKE_CONFIGURATION_TYPES="Debug;Release"
+```
+Or simply run ```generate_vs_solution.bat``` if you are using ```Windows```.
 
-- For ```macOS``` and ```Linux```:
-
-    ```bash
-    cd build/bin
-    ./app
-    ```
-
-- For ```Windows```:
-
-    ```bash
-    cd build/bin/Debug
-    app.exe
-    ```
-
-### Visual Studio Code
-
-I added some helper files for ```vscode``` if the user prefers to use this IDE. If ```vscode``` is chosen, I recommend to install and use the extension [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools). It works for Windows, Linux and macOS.
-
-### Windows
-
-It also possible to load and build the project using ```Visual Studio```.
+Then you could use ```Visual Studio``` if you are using ```Windows```.
 
 ## Tests
 
-Use the following commands:
+Run one of these scripts to run the tests depending on your OS:
 
-```bash
+```
+run_tests.bat
+run_tests.sh
+```
+
+If you prefer to manually run the tests, run the following commands:
+
+```js
 cmake --build build/tests --target test_plugin_manager -j
 cd build && ctest --output-on-failure && cd ..
 ```
+
 ## Contributing
 
-Just to let you know, pull requests are welcome. For major changes, please open an issue first to discuss what you want to change.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
