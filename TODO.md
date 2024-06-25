@@ -15,4 +15,3 @@
 ## OPTIONAL
 
 - [X] Include .editorconfig
-- [ ] Use clang-format
