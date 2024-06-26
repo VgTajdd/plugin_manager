@@ -1,46 +1,41 @@
 @startuml Plugin Manager Class Diagram
 
-package common <<Folder>> #LightSkyBlue {
-    interface IPlugin{
-        + void sayHelloTo( const char* username )
-        + const char* name()
-        + void doSomething()
-    }
-}
-
-package PluginManagerLib <<Node>> #LightGreen {
+package plugin_manager <<Node>> #LightGreen {
     interface IPluginManager{
-        + bool loadPlugin(const char* filename)
+        + IPlugin* loadPlugin(const char* filename)
         + bool unloadPlugin(const char* filename)
         + IPlugin* getPlugin(const char* filename)
     }
     class PluginManager
 
+    interface IPlugin{
+        + const char* name()
+    }
+
     ' Inheritance.
     PluginManager -|> IPluginManager
 }
 
-package Plugin <<Node>> #LightGreen {
-    class PluginA
-}
-
 package app <<Node>> #LightBlue {
+    class PluginA
+    class PluginB{
+    }
+    interface ICustomPlugin{
+        + void sayHelloTo( const char* username )
+        + void doSomething()
+    }
 }
 
 ' Aggregation.
 PluginManager o-- IPlugin : contains
 
-' Inheritance.
-PluginA -|> IPlugin
-
 ' Dependency.
 app -> IPlugin
 app -> IPluginManager
 
-' Component dependency.
-PluginManagerLib ..> Plugin
-note on link #lightgray: Explicit Loading\n(Plugin)
-app .> PluginManagerLib
-note on link #lightgray: Implicit Loading\n(Dynamic Linking)
+' Inheritance.
+PluginA -|> ICustomPlugin
+ICustomPlugin -|> IPlugin
+PluginB -|> IPlugin
 
 @enduml
