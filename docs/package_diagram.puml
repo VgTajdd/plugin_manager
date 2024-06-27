@@ -1,0 +1,17 @@
+@startuml Plugin Manager Package Diagram
+
+package app <<Node>> #LightBlue {
+}
+
+package plugin <<Node>> #LightSalmon {
+}
+
+package plugin_manager <<Node>> #LightGreen {
+}
+
+plugin_manager .> plugin
+note on link #lightgray: Explicit Loading\n(Plugin)
+app .> plugin_manager
+note on link #lightgray: Implicit Loading\n(Dynamic Linking)
+
+@enduml
